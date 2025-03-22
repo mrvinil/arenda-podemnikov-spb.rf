@@ -1,6 +1,6 @@
 <? if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die(); ?>
 <?
-$test = 'dsad';
+
 $utmMark = 'form-arendapodemnikov';
 $phonePath = $_SERVER['DOCUMENT_ROOT'] . SITE_DIR . "include/phonePath.php";
 $_monthsList = array(
