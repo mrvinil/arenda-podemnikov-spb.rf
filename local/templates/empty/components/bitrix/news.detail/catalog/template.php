@@ -18,7 +18,7 @@ $this->setFrameMode(true);
 		<div class="d-block d-sm-none mb-3">
 			<? if($arResult["NAME"]): ?>
 				<div class="product--main-title">
-					<h1><?=$arResult["NAME"]; ?></h1>
+					<h1><?= html_entity_decode($arResult["NAME"]); ?></h1>
 				</div>
 			<? endif; ?>
 			<div class="d-flex align-items-center justify-content-between product--info">
@@ -34,13 +34,13 @@ $this->setFrameMode(true);
 					<div class="product--gallery--images">
 						<? if($arResult["DISPLAY_PROPERTIES"]["MORE_PHOTO"]): ?>
 							<? foreach($arResult["DISPLAY_PROPERTIES"]["MORE_PHOTO"]["VALUE"] as $imageID): ?>
-								<? $image = CFile::ResizeImageGet( 
-									$imageID, 
-									["width"=> 451, "height"=> 382], 
-									BX_RESIZE_IMAGE_EXACT, 
-									false, 
-									false, 
-									false, 
+								<? $image = CFile::ResizeImageGet(
+									$imageID,
+									["width"=> 451, "height"=> 382],
+									BX_RESIZE_IMAGE_EXACT,
+									false,
+									false,
+									false,
 									false
 								); ?>
 								<? if($image): ?>
@@ -54,13 +54,13 @@ $this->setFrameMode(true);
 					<div class="product--gallery--thumbs">
 						<? if($arResult["DISPLAY_PROPERTIES"]["MORE_PHOTO"]): ?>
 							<? foreach($arResult["DISPLAY_PROPERTIES"]["MORE_PHOTO"]["VALUE"] as $thumbID): ?>
-								<? $thumb = CFile::ResizeImageGet( 
-									$thumbID, 
-									["width"=> 80, "height"=> 80], 
-									BX_RESIZE_IMAGE_EXACT, 
-									false, 
-									false, 
-									false, 
+								<? $thumb = CFile::ResizeImageGet(
+									$thumbID,
+									["width"=> 80, "height"=> 80],
+									BX_RESIZE_IMAGE_EXACT,
+									false,
+									false,
+									false,
 									false
 								); ?>
 								<? if($image): ?>
@@ -79,7 +79,7 @@ $this->setFrameMode(true);
 						<div class="d-none d-sm-block">
 							<? if($arResult["NAME"]): ?>
 								<div class="product--main-title">
-									<h1><?=strip_tags($arResult["NAME"]); ?></h1>
+									<h1><?= html_entity_decode($arResult["NAME"]); ?></h1>
 								</div>
 							<? endif; ?>
 							<div class="d-flex flex-row flex-lg-column flex-xl-row align-items-center justify-content-between product--info">
@@ -199,22 +199,46 @@ $this->setFrameMode(true);
 								"bitrix:form.result.new",
 								"arenda",
 								Array(
-									"SEF_MODE" => "N", 
-									"WEB_FORM_ID" => 1, 
-									"LIST_URL" => "", 
-									"EDIT_URL" => "", 
-									"SUCCESS_URL" => "", 
-									"CHAIN_ITEM_TEXT" => "", 
-									"CHAIN_ITEM_LINK" => "", 
-									"IGNORE_CUSTOM_TEMPLATE" => "Y", 
-									"USE_EXTENDED_ERRORS" => "Y", 
-									"CACHE_TYPE" => "A", 
-									"CACHE_TIME" => "3600", 
-									"SEF_FOLDER" => "/", 
+									"SEF_MODE" => "N",
+									"WEB_FORM_ID" => 1,
+									"LIST_URL" => "",
+									"EDIT_URL" => "",
+									"SUCCESS_URL" => "",
+									"CHAIN_ITEM_TEXT" => "",
+									"CHAIN_ITEM_LINK" => "",
+									"IGNORE_CUSTOM_TEMPLATE" => "Y",
+									"USE_EXTENDED_ERRORS" => "Y",
+									"CACHE_TYPE" => "A",
+									"CACHE_TIME" => "3600",
+									"SEF_FOLDER" => "/",
 									"VARIABLE_ALIASES" => Array(
 									)
 								)
 							);?>
+							<script>
+								// Передача данных из PHP в JavaScript
+								const productName = "<?= $arResult['NAME']; ?>";
+								const productPrice = "<?= $arResult['DISPLAY_PROPERTIES']['ATT_PRICE']['VALUE']; ?>";
+								
+								// Функция для декодирования HTML-сущностей
+								function decodeHtmlEntities(str) {
+									const textArea = document.createElement('textarea');
+									textArea.innerHTML = str;
+									return textArea.value;
+								}
+								
+								// Очистка product_name: декодируем сущности и удаляем все HTML-теги
+								const cleanProductName = decodeHtmlEntities(productName).replace(/<[^>]*>/g, '').trim();
+								
+								// Очистка product_price: оставляем только цифры
+								const cleanProductPrice = productPrice.replace(/\D/g, '');
+								
+								// Заполнение скрытых полей
+								document.addEventListener('DOMContentLoaded', function() {
+									document.getElementById('product_name').value = cleanProductName;
+									document.getElementById('product_price').value = cleanProductPrice;
+								});
+							</script>
 						</div>
 					</div>
 				</div>

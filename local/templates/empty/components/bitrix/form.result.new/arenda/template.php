@@ -19,6 +19,10 @@ if ($arResult["isFormErrors"] == "Y"):?>
 	<?if ($arResult["isFormNote"] != "Y"): ?>
 		<?=$arResult["FORM_HEADER"]?>
 		<div class="error-msg"></div>
+		<!-- Скрытые поля для передачи данных -->
+		<input type="hidden" id="product_name" name="product_name" value="">
+		<input type="hidden" id="product_price" name="product_price" value="">
+	
 		<? foreach ($arResult["QUESTIONS"] as $FIELD_SID => $arQuestion): ?>
 			<? if ($arQuestion['STRUCTURE'][0]['FIELD_TYPE'] == 'hidden'): ?>
 				<?=$arQuestion["HTML_CODE"]; ?>
@@ -76,7 +80,7 @@ if ($arResult["isFormErrors"] == "Y"):?>
     ajaxForm(document.getElementsByName('<?=$arResult['arForm']['SID']?>')[0], '<?=$templateFolder?>/ajax.php')
 </script>
 
-<? 
+<?
 $this->addExternalCss(SITE_TEMPLATE_PATH . "/assets/libs/air-datepicker/dist/air-datepicker.css");
 $this->addExternalJS(SITE_TEMPLATE_PATH . "/assets/libs/air-datepicker/dist/air-datepicker.js");
 //$this->addExternalJS(SITE_TEMPLATE_PATH . "/assets/libs/inputmask/dist/jquery.inputmask.min.js");
