@@ -1,0 +1,40 @@
+/.htaccess
+/*.htaccess
+/.htaccess*
+/urlrewrite.php
+/web.config
+/*web.config
+/*.log
+/*.sql
+/.log
+# исключаем из репозитория текстовые файлы, но оставляем robots.txt
+/*.txt
+!/robots.txt
+/sitemap*.xml
+/*.dt
+/*.tar.gz
+/*.gz
+/*.tar
+/*.bak
+/*.old
+/*~
+*/_*
+/_*
+/composer.*
+
+# исключаем ВСЮ папку bitrix, но ниже настроим включение нужных папок
+# или используйте папку /local, чтобы полностью исключить папку bitrix
+/bitrix
+
+.idea
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# исключаем служебные и ненужные папки проекта
+/dev
+/pma
+/upload
+/verstka
+/cgi-bin
+/.cache

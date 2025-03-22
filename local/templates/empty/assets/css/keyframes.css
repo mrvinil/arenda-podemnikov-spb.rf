@@ -1,0 +1,20 @@
+@keyframes pulse {
+	from {
+		transform: scale(1);
+	}
+	to {
+		transform: scale(1.1);
+	}
+}
+
+@keyframes transform-arrow {
+	from {
+		transform: translateY(0px);
+	}
+	to {
+		transform: translateY(-30px);
+	}
+}
+.fa-caret-right {
+	/*animation: pulse 1s ease-in-out infinite alternate;*/
+}
