@@ -3,7 +3,15 @@ require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/header.php");
 $APPLICATION->SetTitle("Аренда подъемников с доставкой по СПб и Л.О.");
 ?>
 	
-	<div class="banner" style="background-image: url(/images/banner__main2.jpg);">
+	<div class="banner">
+		<div class="banner--wrapper">
+			<div class="banner--slider">
+				<div class="banner--slide" style="background-image: url(/images/banner__main2.jpg);"></div>
+				<div class="banner--slide" style="background-image: url(/images/banner__main2.jpg);"></div>
+				<div class="banner--slide" style="background-image: url(/images/banner__main2.jpg);"></div>
+				<div class="banner--slide" style="background-image: url(/images/banner__main2.jpg);"></div>
+			</div>
+		</div>
 		<h2 class="section banner__title banner__title_type_center">Аренда подъемников</h2>
 		<div class="section banner__desc">
 			<div class="banner__advantage">
@@ -16,7 +24,7 @@ $APPLICATION->SetTitle("Аренда подъемников с доставко�
 					<p class="banner__advantage-name">Стоимость от&nbsp;1&nbsp;850&nbsp;р/сут</p>
 				</div>
 			</div>
-			<a href="#" class="btn btn--yellow banner__button" data-target="callback">Взять в аренду</a>
+			<!--<a href="#" class="btn btn--yellow banner__button" data-target="callback">Взять в аренду</a>-->
 		</div>
 	</div>
 	
@@ -39,7 +47,7 @@ $APPLICATION->SetTitle("Аренда подъемников с доставко�
 					"CACHE_TIME" => "36000000",
 					"CACHE_TYPE" => "N",
 					"CHECK_DATES" => "Y",
-					"DETAIL_URL" => "",
+					"DETAIL_URL" => "/catalog/detail.php?ELEMENT_ID=#ELEMENT_ID#",
 					"DISPLAY_BOTTOM_PAGER" => "N",
 					"DISPLAY_DATE" => "N",
 					"DISPLAY_NAME" => "Y",
@@ -99,9 +107,15 @@ $APPLICATION->SetTitle("Аренда подъемников с доставко�
 		
 	</div>
 
+	<div class="section--banner-s1x">
+		<div class="section gap" id="banner-s1x">
+			<p class="banner-s1x--title">Подскажем с выбором и поможем с доставкой</p>
+		</div>
+	</div>
 	
 	<div class="section gap" id="aboutbit">
-		<h2 class="section-title section-title_type_big">Как выглядят подъемники<br> сдаваемые в аренду</h2>
+        <!-- Как выглядят подъемники<br> сдаваемые в аренду -->
+		<h2 class="section-title section-title_type_big">Подъемники в действии</h2>
 		<div class="slider" id="slider__about-bit">
 			<?$APPLICATION->IncludeComponent(
 	"bitrix:news.list",
@@ -128,7 +142,6 @@ $APPLICATION->SetTitle("Аренда подъемников с доставко�
 		"DISPLAY_TOP_PAGER" => "N",
 		"FIELD_CODE" => array(
 			0 => "DETAIL_PICTURE",
-			1 => "",
 		),
 		"FILTER_NAME" => "",
 		"HIDE_LINK_WHEN_NO_DETAIL" => "N",
@@ -254,9 +267,30 @@ $APPLICATION->SetTitle("Аренда подъемников с доставко�
 	
 	
 	
-	<div class="section gap" id="map">
+	<!--<div class="section gap" id="map">
 		<h2 class="section-title"></h2>
 		<img src="/images/map.png" class="map img-responsive">
+	</div>-->
+
+	<div class="section--banner-s2x">
+		<div class="section gap" id="banner-s2x">
+			<p class="banner-s2x--title">Преимущества услуг аренды подъемной техники</p>
+			<div class="banner-s2x--container">
+				<div class="banner-s2x--item">
+					<p class="banner-s2x--text">Большой ассортимент техники в наличии</p>
+				</div>
+				<div class="banner-s2x--item">
+					<p class="banner-s2x--text">Выгодные цены, скидки постоянным клиентам</p>
+				</div>
+				<div class="banner-s2x--item">
+					<p class="banner-s2x--text">Сервис 24/7 на весь срок аренды</p>
+				</div>
+				<div class="banner-s2x--item">
+					<p class="banner-s2x--text">Склад запасных частей в наличии</p>
+				</div>
+			</div>
+			
+		</div>
 	</div>
 
 

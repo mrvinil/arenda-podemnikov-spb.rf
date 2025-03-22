@@ -8,6 +8,17 @@ $(document).ready(function(){
 		}
 		return false; // выключаем стандартное действие
 	});
+
+    $(".banner--slider").slick({
+        autoplay: true,
+        fade: true,
+        infinite: true,
+        dots: false,
+        arrows: false,
+        cssEase: "ease",
+        autoplaySpeed: 4000,
+        speed: 1000
+    });
 	
 	//Slick Slider кастомная навигация и счетчик слайдов
 	// О бытовках

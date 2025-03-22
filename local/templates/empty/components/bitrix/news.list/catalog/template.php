@@ -16,15 +16,21 @@ $this->setFrameMode(true);
 <div class="filter">
 	<div class="filter-type">
 		<div class="filter-type__item" data-target="nojnici">
-			<img src="/images/types_1-2.jpg">
+			<div class="type-product--image">
+				<img src="/images/types_1-2nw.png">
+			</div>
 			<p>Ножничные</p>
 		</div>
 		<div class="filter-type__item" data-target="koleno">
-			<img src="/images/types_2-1.png">
+			<div class="type-product--image">
+				<img src="/images/types_2-1nw.png">
+			</div>
 			<p>Коленчатые</p>
 		</div>
 		<div class="filter-type__item" data-target="teleskop">
-			<img src="/images/types_3-1.jpg">
+			<div class="type-product--image">
+				<img src="/images/types_3-1nw.png">
+			</div>
 			<p>Телескопические</p>
 		</div>
 	</div>
@@ -50,11 +56,34 @@ $this->AddEditAction($arItem['ID'], $arItem['EDIT_LINK'], CIBlock::GetArrayByID(
 $this->AddDeleteAction($arItem['ID'], $arItem['DELETE_LINK'], CIBlock::GetArrayByID($arItem["IBLOCK_ID"], "ELEMENT_DELETE"), array("CONFIRM" => GetMessage('CT_BNL_ELEMENT_DELETE_CONFIRM')));
 ?>
 	<div class="card__item" id="<?=$this->GetEditAreaId($arItem['ID']);?>" data-type="<?=$arItem["PROPERTIES"]["ATT_TYPE"]["VALUE_XML_ID"];?>" data-fuel="<?=$arItem["PROPERTIES"]["ATT_TOPLIVO"]["VALUE_XML_ID"];?>">
-		<div class="card__img-list">
+<!--		<a href="--><?php //=$arItem["DETAIL_PAGE_URL"]?><!--" class="card-item--url"></a>-->
+        <div class="card__img-list">
+			<div class="card__tech_icons">
+                <div class="icon height">
+					<? if($arItem["PROPERTIES"]["ATT_VISOTA"]): ?>
+						<?
+							$heightPodjemnik = (int) $arItem["PROPERTIES"]["ATT_VISOTA"]["VALUE"];
+							$heightPodjemnik = round($heightPodjemnik);
+						?>
+						<span><?=$heightPodjemnik;?></span>
+					<? endif; ?>
+				</div>
+                <div class="icon weight">
+					<? if($arItem["PROPERTIES"]["ATT_GRUZ"]): ?>
+						<span><?=$arItem["PROPERTIES"]["ATT_GRUZ"]["VALUE"];?></span>
+					<? endif; ?>
+				</div>
+				<? if($arItem["PROPERTIES"]["ATT_TOPLIVO"]): ?>
+					<? if($arItem["PROPERTIES"]["ATT_TOPLIVO"]["VALUE"] == "Электрический"): ?>
+						<div class="icon akb"></div>
+					<? elseif($arItem["PROPERTIES"]["ATT_TOPLIVO"]["VALUE"] == "Дизельный"): ?>
+						<div class="icon disel"></div>
+					<? endif; ?>
+				<? endif; ?>
+            </div>
 			<img src="<?= $arItem["PREVIEW_PICTURE"]["SRC"] ?>" alt="<?=$arItem["NAME"];?>" class="card__img img-responsive">
 		</div>
 		<div class="card__desc">
-			<p class="card__price"><?=$arItem["PROPERTIES"]["ATT_PRICE"]["VALUE"];?></p>
 			<h3 class="card__name"><?=htmlspecialcharsback($arItem["NAME"]); ?></h3>
 			<div class="card-property__list">
 				<div class="card-property">
@@ -78,8 +107,9 @@ $this->AddDeleteAction($arItem['ID'], $arItem['DELETE_LINK'], CIBlock::GetArrayB
 					<div class="card-property__value"><?=$arItem["PROPERTIES"]["ATT_VES"]["VALUE"];?></div>
 				</div>
 			</div>
+			<p class="card__price"><?=$arItem["PROPERTIES"]["ATT_PRICE"]["VALUE"];?></p>
 		</div>
-		<a href="#" class="btn btn--cta card__button" data-target="callback">Арендовать</a>
+		<a href="#" class="card__button" data-target="callback">Арендовать</a><!--btn btn--cta-->
 	</div>
 <?endforeach;?>
 </div>

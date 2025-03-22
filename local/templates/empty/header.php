@@ -15,13 +15,21 @@ $month = $_monthsList[date("n")];
 <html>
 <head>
 	<? $APPLICATION->ShowHead() ?>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
 	<?
 	
 	use Bitrix\Main\Loader;
 	use Bitrix\Main\Page\Asset;
-	
+
 	//CSS
+
 	Asset::getInstance()->addCss(SITE_TEMPLATE_PATH . "/assets/css/normalize.css");
+	Asset::getInstance()->addCss(SITE_TEMPLATE_PATH . "/assets/libs/bootstrap/css/bootstrap.min.css");
+	Asset::getInstance()->addCss(SITE_TEMPLATE_PATH . "/assets/libs/fancybox/css/jquery.fancybox.min.css");
 	Asset::getInstance()->addCss(SITE_TEMPLATE_PATH . "/assets/css/keyframes.css");
 	Asset::getInstance()->addCss(SITE_TEMPLATE_PATH . "/assets/css/FontAwesomePro571.css");
 	Asset::getInstance()->addCss(SITE_TEMPLATE_PATH . "/assets/css/slick.css");
@@ -31,7 +39,11 @@ $month = $_monthsList[date("n")];
 	//JS
 	CJSCore::Init(array("jquery3", 'fx'));
 	CUtil::InitJSCore( array('ajax' , 'popup' ));
+    Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . "/assets/libs/bootstrap/js/bootstrap.min.js");
 	Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . "/assets/js/slick.min.js");
+	Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . "/assets/libs/fancybox/js/jquery.fancybox.min.js");
+	/*Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . "/assets/libs/inputmask/dist/inputmask.min.js");
+	Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . "/assets/libs/inputmask/dist/bindings/inputmask.binding.js");*/
 	Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . "/assets/js/phoneinput.js");
 	Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . "/assets/js/popup_callback.js");
 	Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . "/assets/js/popup_validate.js");
@@ -43,6 +55,7 @@ $month = $_monthsList[date("n")];
 	Asset::getInstance()->addString("<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>");
 	Asset::getInstance()->addString("<meta name='msvalidate.01' content='EC8F5C6C367270EECEA424441A3E0815'>");
 	?>
+
 	<title>Аренда подъемников с доставкой по СПб и Л.О.</title>
 </head>
 <body>
@@ -50,21 +63,23 @@ $month = $_monthsList[date("n")];
 <div id="panel"><? $APPLICATION->ShowPanel(); ?></div>
 
 <header class="header" id="stick">
-	<div class="header__top">
-		<nav class="section header__nav">
-			<ul class="header__menu">
-				<li><a href="#models" class="header__menu-link">Модели</a></li>
-				<li><a href="#aboutbit" class="header__menu-link">О подъемниках</a></li>
-				<li><a href="#delivery" class="header__menu-link">Доставка</a></li>
-				<li><a href="#aboutass" class="header__menu-link">О нас</a></li>
-				<li><a href="#contacts" class="header__menu-link">Контакты</a></li>
-			</ul>
-			<div class="header__location header__location_type_desktop">
-				<img src="/images/icons/icon__address.png" class="header__location-icon">
-				<p class="header__location-value">Санкт-Петербург и область</p>
-			</div>
-		</nav>
-	</div>
+	<? if($APPLICATION->GetCurPage() === "/"): ?>
+		<div class="header__top">
+			<nav class="section header__nav">
+				<ul class="header__menu">
+					<li><a href="#models" class="header__menu-link">Модели</a></li>
+					<li><a href="#aboutbit" class="header__menu-link">О подъемниках</a></li>
+					<li><a href="#delivery" class="header__menu-link">Доставка</a></li>
+					<li><a href="#aboutass" class="header__menu-link">О нас</a></li>
+					<li><a href="#contacts" class="header__menu-link">Контакты</a></li>
+				</ul>
+				<div class="header__location header__location_type_desktop">
+					<img src="/images/icons/icon__address.png" class="header__location-icon">
+					<p class="header__location-value">Санкт-Петербург и область</p>
+				</div>
+			</nav>
+		</div>
+	<? endif; ?>
 	<div class="section header__info">
 		<a href="/" class="header__logo link"></a>
 		<div class="header__discount"><?//=$month?> <!-- - скидка 10% --></div>
