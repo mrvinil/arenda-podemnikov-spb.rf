@@ -6,10 +6,11 @@ $APPLICATION->SetTitle("Аренда подъемников с доставко�
 	<div class="banner">
 		<div class="banner--wrapper">
 			<div class="banner--slider">
-				<div class="banner--slide" style="background-image: url(/images/banner__main2.jpg);"></div>
-				<div class="banner--slide" style="background-image: url(/images/banner__main2.jpg);"></div>
-				<div class="banner--slide" style="background-image: url(/images/banner__main2.jpg);"></div>
-				<div class="banner--slide" style="background-image: url(/images/banner__main2.jpg);"></div>
+				<div class="banner--slide" style="background-image: url(/images/banner/banner__main2.jpg);"></div>
+				<div class="banner--slide" style="background-image: url(/images/banner/banner__main_1.jpg);"></div>
+				<div class="banner--slide" style="background-image: url(/images/banner/banner__main_2.jpg);"></div>
+				<div class="banner--slide" style="background-image: url(/images/banner/banner__main_3.jpg);"></div>
+				<div class="banner--slide" style="background-image: url(/images/banner/banner__main_4.jpg);"></div>
 			</div>
 		</div>
 		<h2 class="section banner__title banner__title_type_center">Аренда подъемников</h2>
@@ -29,7 +30,7 @@ $APPLICATION->SetTitle("Аренда подъемников с доставко�
 	</div>
 	
 	<div class="section gap" id="models">
-		<h2 class="section-title">Типы подъемников</h2>
+		<h2 class="section-title section-title_type_catalog">Типы подъемников</h2>
 		
 			<?$APPLICATION->IncludeComponent(
 				"bitrix:news.list",
@@ -187,7 +188,7 @@ $APPLICATION->SetTitle("Аренда подъемников с доставко�
 	</div>
 	
 	<div class="banner banner_type_small gap"
-	     style="background-image: url(/images/banner__srok2.png);" id="delivery">
+	     style="background-image: url(/images/banner/banner__srok2.png);" id="delivery">
 		<h2 class="section banner__title banner__title_type_small"></h2>
 		<div class="section banner__desc">
 			<a href="#" class="btn btn--yellow banner__button banner__button_type_small" data-target="callback">Заказать

@@ -18,7 +18,7 @@ $this->setFrameMode(true);
 		<div class="d-block d-sm-none mb-3">
 			<? if($arResult["NAME"]): ?>
 				<div class="product--main-title">
-					<h1><?=$arResult["NAME"]; ?></h1>
+					<h1><?= html_entity_decode($arResult["NAME"]); ?></h1>
 				</div>
 			<? endif; ?>
 			<div class="d-flex align-items-center justify-content-between product--info">
@@ -31,39 +31,36 @@ $this->setFrameMode(true);
 		<div class="row">
 			<div class="col-lg-5">
 				<div class="product--gallery">
-					<div class="product--gallery--images">
+					<!-- Основные изображения -->
+					<div class="product--gallery--images slider-for">
 						<? if($arResult["DISPLAY_PROPERTIES"]["MORE_PHOTO"]): ?>
 							<? foreach($arResult["DISPLAY_PROPERTIES"]["MORE_PHOTO"]["VALUE"] as $imageID): ?>
-								<? $image = CFile::ResizeImageGet( 
-									$imageID, 
-									["width"=> 451, "height"=> 382], 
-									BX_RESIZE_IMAGE_EXACT, 
-									false, 
-									false, 
-									false, 
-									false
+								<? $image = CFile::ResizeImageGet(
+									$imageID,
+									["width"=> 451, "height"=> 382],
+									BX_RESIZE_IMAGE_EXACT
 								); ?>
 								<? if($image): ?>
 									<div>
-										<a data-fancybox="gallery" href="<?=CFile::GetPath($imageID); ?>"><img src="<?=$image["src"];?>" class="img-fluid" alt=""></a>
+										<a data-fancybox="gallery" href="<?=CFile::GetPath($imageID); ?>">
+											<img src="<?=$image["src"];?>" class="img-fluid" alt="">
+										</a>
 									</div>
 								<? endif; ?>
 							<? endforeach; ?>
 						<? endif; ?>
 					</div>
-					<div class="product--gallery--thumbs">
+					
+					<!-- Миниатюры -->
+					<div class="product--gallery--thumbs slider-nav">
 						<? if($arResult["DISPLAY_PROPERTIES"]["MORE_PHOTO"]): ?>
 							<? foreach($arResult["DISPLAY_PROPERTIES"]["MORE_PHOTO"]["VALUE"] as $thumbID): ?>
-								<? $thumb = CFile::ResizeImageGet( 
-									$thumbID, 
-									["width"=> 80, "height"=> 80], 
-									BX_RESIZE_IMAGE_EXACT, 
-									false, 
-									false, 
-									false, 
-									false
+								<? $thumb = CFile::ResizeImageGet(
+									$thumbID,
+									["width"=> 80, "height"=> 80],
+									BX_RESIZE_IMAGE_EXACT
 								); ?>
-								<? if($image): ?>
+								<? if($thumb): ?>
 									<div>
 										<img src="<?=$thumb["src"];?>" class="img-fluid" alt="">
 									</div>
@@ -72,6 +69,26 @@ $this->setFrameMode(true);
 						<? endif; ?>
 					</div>
 				</div>
+				<script>
+					$(document).ready(function(){
+						$('.slider-for').slick({
+							slidesToShow: 1,
+							slidesToScroll: 1,
+							arrows: true,
+							fade: true,
+							asNavFor: '.slider-nav'
+						});
+						
+						$('.slider-nav').slick({
+							slidesToShow: 3,
+							slidesToScroll: 1,
+							asNavFor: '.slider-for',
+							dots: false,
+							centerMode: true,
+							focusOnSelect: true
+						});
+					});
+				</script>
 			</div>
 			<div class="col-lg-7">
 				<div class="row">
@@ -79,7 +96,7 @@ $this->setFrameMode(true);
 						<div class="d-none d-sm-block">
 							<? if($arResult["NAME"]): ?>
 								<div class="product--main-title">
-									<h1><?=strip_tags($arResult["NAME"]); ?></h1>
+									<h1><?= html_entity_decode($arResult["NAME"]); ?></h1>
 								</div>
 							<? endif; ?>
 							<div class="d-flex flex-row flex-lg-column flex-xl-row align-items-center justify-content-between product--info">
@@ -143,28 +160,28 @@ $this->setFrameMode(true);
 								</div>
 							<? endif; ?>
 						</div>
-						<div class="d-flex flex-row flex-lg-column flex-xl-row justify-content-between product--info-links">
-							<a href="media/guide/T107027ru.pdf" class="d-flex flex-column flex-sm-row align-items-center justify-content-center justify-content-sm-start product--info-link">
-								<svg width="21" height="30" viewBox="0 0 21 30" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin-top:4px;">
-									<path d="M17 23H19C19.5523 23 20 22.5523 20 22V2C20 1.44772 19.5523 1 19 1H6.86937C6.60072 1 6.34337 1.10809 6.1553 1.29993L1.28593 6.26669C1.10266 6.45363 1 6.70497 1 6.96676V22C1 22.5523 1.44772 23 2 23H7.5" stroke="#828282" stroke-width="2" stroke-linecap="round"></path>
-									<path d="M1.49976 8H6.99976C7.55204 8 7.99976 7.55228 7.99976 7V1" stroke="#828282" stroke-width="2"></path>
-									<path d="M6 12H15" stroke="#828282" stroke-width="2" stroke-linecap="round"></path>
-									<path d="M6 16H15" stroke="#828282" stroke-width="2" stroke-linecap="round"></path>
-									<path d="M12.1155 19.5278L12.1155 26.1978" stroke="#828282" stroke-width="2" stroke-linecap="round"></path>
-									<path d="M9.89404 25.4567L12.1174 27.6801L14.3407 25.4567" stroke="#828282" stroke-width="2" stroke-linecap="round"></path>
-								</svg>
-								<span>Скачать<br>документацию</span>
-							</a>
-							<a href="catalog/rent/terms.html" class="d-flex flex-column flex-sm-row align-items-center justify-content-center justify-content-sm-start product--info-link">
-								<svg width="21" height="24" viewBox="0 0 21 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-									<path d="M6.86848 1H20V23H1L1 6.96765L6.86848 1Z" stroke="#828282" stroke-width="2" stroke-linecap="round"></path>
-									<path d="M1.49976 8H6.99976C7.55204 8 7.99976 7.55228 7.99976 7V1" stroke="#828282" stroke-width="2"></path>
-									<path d="M6 12H15" stroke="#828282" stroke-width="2" stroke-linecap="round"></path>
-									<path d="M6 16H15" stroke="#828282" stroke-width="2" stroke-linecap="round"></path>
-								</svg>
-								<span>Условия аренды</span>
-							</a>
-						</div>
+<!--						<div class="d-flex flex-row flex-lg-column flex-xl-row justify-content-between product--info-links">-->
+<!--							<a href="media/guide/T107027ru.pdf" class="d-flex flex-column flex-sm-row align-items-center justify-content-center justify-content-sm-start product--info-link">-->
+<!--								<svg width="21" height="30" viewBox="0 0 21 30" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin-top:4px;">-->
+<!--									<path d="M17 23H19C19.5523 23 20 22.5523 20 22V2C20 1.44772 19.5523 1 19 1H6.86937C6.60072 1 6.34337 1.10809 6.1553 1.29993L1.28593 6.26669C1.10266 6.45363 1 6.70497 1 6.96676V22C1 22.5523 1.44772 23 2 23H7.5" stroke="#828282" stroke-width="2" stroke-linecap="round"></path>-->
+<!--									<path d="M1.49976 8H6.99976C7.55204 8 7.99976 7.55228 7.99976 7V1" stroke="#828282" stroke-width="2"></path>-->
+<!--									<path d="M6 12H15" stroke="#828282" stroke-width="2" stroke-linecap="round"></path>-->
+<!--									<path d="M6 16H15" stroke="#828282" stroke-width="2" stroke-linecap="round"></path>-->
+<!--									<path d="M12.1155 19.5278L12.1155 26.1978" stroke="#828282" stroke-width="2" stroke-linecap="round"></path>-->
+<!--									<path d="M9.89404 25.4567L12.1174 27.6801L14.3407 25.4567" stroke="#828282" stroke-width="2" stroke-linecap="round"></path>-->
+<!--								</svg>-->
+<!--								<span>Скачать<br>документацию</span>-->
+<!--							</a>-->
+<!--							<a href="catalog/rent/terms.html" class="d-flex flex-column flex-sm-row align-items-center justify-content-center justify-content-sm-start product--info-link">-->
+<!--								<svg width="21" height="24" viewBox="0 0 21 24" fill="none" xmlns="http://www.w3.org/2000/svg">-->
+<!--									<path d="M6.86848 1H20V23H1L1 6.96765L6.86848 1Z" stroke="#828282" stroke-width="2" stroke-linecap="round"></path>-->
+<!--									<path d="M1.49976 8H6.99976C7.55204 8 7.99976 7.55228 7.99976 7V1" stroke="#828282" stroke-width="2"></path>-->
+<!--									<path d="M6 12H15" stroke="#828282" stroke-width="2" stroke-linecap="round"></path>-->
+<!--									<path d="M6 16H15" stroke="#828282" stroke-width="2" stroke-linecap="round"></path>-->
+<!--								</svg>-->
+<!--								<span>Условия аренды</span>-->
+<!--							</a>-->
+<!--						</div>-->
 					</div>
 					<div class="col-md-6">
 						<div class="product--form-arenda">
@@ -199,22 +216,46 @@ $this->setFrameMode(true);
 								"bitrix:form.result.new",
 								"arenda",
 								Array(
-									"SEF_MODE" => "N", 
-									"WEB_FORM_ID" => 1, 
-									"LIST_URL" => "", 
-									"EDIT_URL" => "", 
-									"SUCCESS_URL" => "", 
-									"CHAIN_ITEM_TEXT" => "", 
-									"CHAIN_ITEM_LINK" => "", 
-									"IGNORE_CUSTOM_TEMPLATE" => "Y", 
-									"USE_EXTENDED_ERRORS" => "Y", 
-									"CACHE_TYPE" => "A", 
-									"CACHE_TIME" => "3600", 
-									"SEF_FOLDER" => "/", 
+									"SEF_MODE" => "N",
+									"WEB_FORM_ID" => 1,
+									"LIST_URL" => "",
+									"EDIT_URL" => "",
+									"SUCCESS_URL" => "",
+									"CHAIN_ITEM_TEXT" => "",
+									"CHAIN_ITEM_LINK" => "",
+									"IGNORE_CUSTOM_TEMPLATE" => "Y",
+									"USE_EXTENDED_ERRORS" => "Y",
+									"CACHE_TYPE" => "A",
+									"CACHE_TIME" => "3600",
+									"SEF_FOLDER" => "/",
 									"VARIABLE_ALIASES" => Array(
 									)
 								)
 							);?>
+							<script>
+								// Передача данных из PHP в JavaScript
+								const productName = "<?= $arResult['NAME']; ?>";
+								const productPrice = "<?= $arResult['DISPLAY_PROPERTIES']['ATT_PRICE']['VALUE']; ?>";
+								
+								// Функция для декодирования HTML-сущностей
+								function decodeHtmlEntities(str) {
+									const textArea = document.createElement('textarea');
+									textArea.innerHTML = str;
+									return textArea.value;
+								}
+								
+								// Очистка product_name: декодируем сущности и удаляем все HTML-теги
+								const cleanProductName = decodeHtmlEntities(productName).replace(/<[^>]*>/g, '').trim();
+								
+								// Очистка product_price: оставляем только цифры
+								const cleanProductPrice = productPrice.replace(/\D/g, '');
+								
+								// Заполнение скрытых полей
+								document.addEventListener('DOMContentLoaded', function() {
+									document.getElementById('product_name').value = cleanProductName;
+									document.getElementById('product_price').value = cleanProductPrice;
+								});
+							</script>
 						</div>
 					</div>
 				</div>
@@ -234,8 +275,7 @@ $this->setFrameMode(true);
 					<div class="col-xl-6 col-lg-5">
 						<div class="tab-content product--tabs-content" id="myTabContent">
 							<div class="tab-pane fade show active" id="description-tab-pane" role="tabpanel" aria-labelledby="description-tab" tabindex="0">
-								<p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-								<p>Cumque ipsam, tempore laudantium eveniet illo repellat incidunt fugit obcaecati sunt, fuga blanditiis accusamus quam autem dolore vero nesciunt modi, aspernatur impedit.</p>
+								<?=$arResult["DETAIL_TEXT"];?>
 							</div>
 							<div class="tab-pane fade" id="characteristics-tab-pane" role="tabpanel" aria-labelledby="characteristics-tab" tabindex="0">
 								<table class="table table-striped product-characteristics--table">
@@ -291,7 +331,7 @@ $this->setFrameMode(true);
 										<ul>
 											<li>По телефону:<br><strong>8 (812) 240-85-77</strong></li>
 											<li>Заполните форму заказа на сайте</li>
-											<li>Напишите на почту:<br><strong>---</strong></li>
+<!--											<li>Напишите на почту:<br><strong>---</strong></li>-->
 										</ul>
 									</div>
 								</div>
