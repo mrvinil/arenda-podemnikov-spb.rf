@@ -160,28 +160,28 @@ $this->setFrameMode(true);
 								</div>
 							<? endif; ?>
 						</div>
-						<div class="d-flex flex-row flex-lg-column flex-xl-row justify-content-between product--info-links">
-							<a href="media/guide/T107027ru.pdf" class="d-flex flex-column flex-sm-row align-items-center justify-content-center justify-content-sm-start product--info-link">
-								<svg width="21" height="30" viewBox="0 0 21 30" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin-top:4px;">
-									<path d="M17 23H19C19.5523 23 20 22.5523 20 22V2C20 1.44772 19.5523 1 19 1H6.86937C6.60072 1 6.34337 1.10809 6.1553 1.29993L1.28593 6.26669C1.10266 6.45363 1 6.70497 1 6.96676V22C1 22.5523 1.44772 23 2 23H7.5" stroke="#828282" stroke-width="2" stroke-linecap="round"></path>
-									<path d="M1.49976 8H6.99976C7.55204 8 7.99976 7.55228 7.99976 7V1" stroke="#828282" stroke-width="2"></path>
-									<path d="M6 12H15" stroke="#828282" stroke-width="2" stroke-linecap="round"></path>
-									<path d="M6 16H15" stroke="#828282" stroke-width="2" stroke-linecap="round"></path>
-									<path d="M12.1155 19.5278L12.1155 26.1978" stroke="#828282" stroke-width="2" stroke-linecap="round"></path>
-									<path d="M9.89404 25.4567L12.1174 27.6801L14.3407 25.4567" stroke="#828282" stroke-width="2" stroke-linecap="round"></path>
-								</svg>
-								<span>Скачать<br>документацию</span>
-							</a>
-							<a href="catalog/rent/terms.html" class="d-flex flex-column flex-sm-row align-items-center justify-content-center justify-content-sm-start product--info-link">
-								<svg width="21" height="24" viewBox="0 0 21 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-									<path d="M6.86848 1H20V23H1L1 6.96765L6.86848 1Z" stroke="#828282" stroke-width="2" stroke-linecap="round"></path>
-									<path d="M1.49976 8H6.99976C7.55204 8 7.99976 7.55228 7.99976 7V1" stroke="#828282" stroke-width="2"></path>
-									<path d="M6 12H15" stroke="#828282" stroke-width="2" stroke-linecap="round"></path>
-									<path d="M6 16H15" stroke="#828282" stroke-width="2" stroke-linecap="round"></path>
-								</svg>
-								<span>Условия аренды</span>
-							</a>
-						</div>
+<!--						<div class="d-flex flex-row flex-lg-column flex-xl-row justify-content-between product--info-links">-->
+<!--							<a href="media/guide/T107027ru.pdf" class="d-flex flex-column flex-sm-row align-items-center justify-content-center justify-content-sm-start product--info-link">-->
+<!--								<svg width="21" height="30" viewBox="0 0 21 30" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin-top:4px;">-->
+<!--									<path d="M17 23H19C19.5523 23 20 22.5523 20 22V2C20 1.44772 19.5523 1 19 1H6.86937C6.60072 1 6.34337 1.10809 6.1553 1.29993L1.28593 6.26669C1.10266 6.45363 1 6.70497 1 6.96676V22C1 22.5523 1.44772 23 2 23H7.5" stroke="#828282" stroke-width="2" stroke-linecap="round"></path>-->
+<!--									<path d="M1.49976 8H6.99976C7.55204 8 7.99976 7.55228 7.99976 7V1" stroke="#828282" stroke-width="2"></path>-->
+<!--									<path d="M6 12H15" stroke="#828282" stroke-width="2" stroke-linecap="round"></path>-->
+<!--									<path d="M6 16H15" stroke="#828282" stroke-width="2" stroke-linecap="round"></path>-->
+<!--									<path d="M12.1155 19.5278L12.1155 26.1978" stroke="#828282" stroke-width="2" stroke-linecap="round"></path>-->
+<!--									<path d="M9.89404 25.4567L12.1174 27.6801L14.3407 25.4567" stroke="#828282" stroke-width="2" stroke-linecap="round"></path>-->
+<!--								</svg>-->
+<!--								<span>Скачать<br>документацию</span>-->
+<!--							</a>-->
+<!--							<a href="catalog/rent/terms.html" class="d-flex flex-column flex-sm-row align-items-center justify-content-center justify-content-sm-start product--info-link">-->
+<!--								<svg width="21" height="24" viewBox="0 0 21 24" fill="none" xmlns="http://www.w3.org/2000/svg">-->
+<!--									<path d="M6.86848 1H20V23H1L1 6.96765L6.86848 1Z" stroke="#828282" stroke-width="2" stroke-linecap="round"></path>-->
+<!--									<path d="M1.49976 8H6.99976C7.55204 8 7.99976 7.55228 7.99976 7V1" stroke="#828282" stroke-width="2"></path>-->
+<!--									<path d="M6 12H15" stroke="#828282" stroke-width="2" stroke-linecap="round"></path>-->
+<!--									<path d="M6 16H15" stroke="#828282" stroke-width="2" stroke-linecap="round"></path>-->
+<!--								</svg>-->
+<!--								<span>Условия аренды</span>-->
+<!--							</a>-->
+<!--						</div>-->
 					</div>
 					<div class="col-md-6">
 						<div class="product--form-arenda">
