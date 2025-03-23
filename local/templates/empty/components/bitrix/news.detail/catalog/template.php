@@ -31,39 +31,36 @@ $this->setFrameMode(true);
 		<div class="row">
 			<div class="col-lg-5">
 				<div class="product--gallery">
-					<div class="product--gallery--images">
+					<!-- Основные изображения -->
+					<div class="product--gallery--images slider-for">
 						<? if($arResult["DISPLAY_PROPERTIES"]["MORE_PHOTO"]): ?>
 							<? foreach($arResult["DISPLAY_PROPERTIES"]["MORE_PHOTO"]["VALUE"] as $imageID): ?>
 								<? $image = CFile::ResizeImageGet(
 									$imageID,
 									["width"=> 451, "height"=> 382],
-									BX_RESIZE_IMAGE_EXACT,
-									false,
-									false,
-									false,
-									false
+									BX_RESIZE_IMAGE_EXACT
 								); ?>
 								<? if($image): ?>
 									<div>
-										<a data-fancybox="gallery" href="<?=CFile::GetPath($imageID); ?>"><img src="<?=$image["src"];?>" class="img-fluid" alt=""></a>
+										<a data-fancybox="gallery" href="<?=CFile::GetPath($imageID); ?>">
+											<img src="<?=$image["src"];?>" class="img-fluid" alt="">
+										</a>
 									</div>
 								<? endif; ?>
 							<? endforeach; ?>
 						<? endif; ?>
 					</div>
-					<div class="product--gallery--thumbs">
+					
+					<!-- Миниатюры -->
+					<div class="product--gallery--thumbs slider-nav">
 						<? if($arResult["DISPLAY_PROPERTIES"]["MORE_PHOTO"]): ?>
 							<? foreach($arResult["DISPLAY_PROPERTIES"]["MORE_PHOTO"]["VALUE"] as $thumbID): ?>
 								<? $thumb = CFile::ResizeImageGet(
 									$thumbID,
 									["width"=> 80, "height"=> 80],
-									BX_RESIZE_IMAGE_EXACT,
-									false,
-									false,
-									false,
-									false
+									BX_RESIZE_IMAGE_EXACT
 								); ?>
-								<? if($image): ?>
+								<? if($thumb): ?>
 									<div>
 										<img src="<?=$thumb["src"];?>" class="img-fluid" alt="">
 									</div>
@@ -72,6 +69,26 @@ $this->setFrameMode(true);
 						<? endif; ?>
 					</div>
 				</div>
+				<script>
+					$(document).ready(function(){
+						$('.slider-for').slick({
+							slidesToShow: 1,
+							slidesToScroll: 1,
+							arrows: true,
+							fade: true,
+							asNavFor: '.slider-nav'
+						});
+						
+						$('.slider-nav').slick({
+							slidesToShow: 3,
+							slidesToScroll: 1,
+							asNavFor: '.slider-for',
+							dots: false,
+							centerMode: true,
+							focusOnSelect: true
+						});
+					});
+				</script>
 			</div>
 			<div class="col-lg-7">
 				<div class="row">
@@ -258,8 +275,7 @@ $this->setFrameMode(true);
 					<div class="col-xl-6 col-lg-5">
 						<div class="tab-content product--tabs-content" id="myTabContent">
 							<div class="tab-pane fade show active" id="description-tab-pane" role="tabpanel" aria-labelledby="description-tab" tabindex="0">
-								<p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-								<p>Cumque ipsam, tempore laudantium eveniet illo repellat incidunt fugit obcaecati sunt, fuga blanditiis accusamus quam autem dolore vero nesciunt modi, aspernatur impedit.</p>
+								<?=$arResult["DETAIL_TEXT"];?>
 							</div>
 							<div class="tab-pane fade" id="characteristics-tab-pane" role="tabpanel" aria-labelledby="characteristics-tab" tabindex="0">
 								<table class="table table-striped product-characteristics--table">
@@ -315,7 +331,7 @@ $this->setFrameMode(true);
 										<ul>
 											<li>По телефону:<br><strong>8 (812) 240-85-77</strong></li>
 											<li>Заполните форму заказа на сайте</li>
-											<li>Напишите на почту:<br><strong>---</strong></li>
+<!--											<li>Напишите на почту:<br><strong>---</strong></li>-->
 										</ul>
 									</div>
 								</div>

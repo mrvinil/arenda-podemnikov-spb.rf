@@ -1469,6 +1469,19 @@ a, input, button {
     border-bottom: 2px solid #0080C3;
 }
 
+.product--gallery--thumbs .slick-slide {
+	cursor: pointer;
+	opacity: 0.6;
+	transition: opacity 0.3s ease;
+}
+.product--gallery--thumbs .slick-current {
+	opacity: 1;
+}
+.slick-next:before,
+.slick-prev:before {
+	display: none !important;
+}
+
 @media (min-width: 768px) and (max-width: 991px) {
     .product--gallery {
         padding-bottom: 30px;
