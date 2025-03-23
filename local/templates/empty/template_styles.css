@@ -3,6 +3,7 @@
 	--color__white: #ffffff;
 	--color__black: #000000;
 	--color__dark: #404449;
+	--color__dark_v2: #2C2A2C;
 	--color__gray: #868686;
 	--color__gray-light: #F7F8F9;
 	--color__red: #E41E0C;
@@ -134,6 +135,11 @@ a, input, button {
 	line-height: 125px;
 	text-transform: uppercase;
 	text-align: center;
+}
+
+.section-title_type_catalog {
+	font-size: 50px;
+	letter-spacing: 10px;
 }
 
 .section-sub-title {
@@ -301,8 +307,7 @@ a, input, button {
 }
 
 .header__top {
-	/*background: var(--color__yellow);*/
-	background-color: #b3b3b3;
+	background: var(--color__dark_v2);
 }
 
 .header__nav {
@@ -321,7 +326,7 @@ a, input, button {
 }
 
 .header__menu-link {
-	color: var(--color__black);
+	color: var(--color__white);
 	text-decoration: none;
 	font-size: 14px;
 	line-height: 19px;
@@ -345,6 +350,7 @@ a, input, button {
 }
 
 .header__location-value {
+	color: var(--color__white);
 	margin-bottom: 0;
 	font-size: 14px;
 	line-height: 17px;
@@ -386,9 +392,9 @@ a, input, button {
 .phone-link {
 	text-decoration: none;
 	color: var(--color__red);
-	font-size: 28px;
+	font-size: 32px;
 	line-height: 31px;
-	font-weight: 500;
+	font-weight: 700;
 }
 
 .callback-link {
@@ -443,7 +449,7 @@ a, input, button {
 
 .banner__title_type_center {
 	text-align: center;
-	padding-top: 100px;
+	padding-top: 60px;
 	padding-bottom: 200px;
 	text-transform: uppercase;
 	font-size: 91px;
@@ -522,6 +528,7 @@ a, input, button {
 	align-items: center;
 	cursor: pointer;
 	border: 1px solid #E0E0E0;
+	box-shadow: 0px 10px 30px rgba(228, 30, 12, 0.2);
 	/*padding: 15px;*/
 }
 
@@ -563,7 +570,7 @@ a, input, button {
 	display: block;
 	width: 153px;
 	height: 153px;
-	background: #b3b3b3;
+	background: var(--color__dark_v2);
 	border-radius: 50%;
 	position: absolute;
 	top: 50%;
@@ -576,7 +583,7 @@ a, input, button {
 .type-product--image:hover:before {
     width: 162px;
     height: 162px;
-    background: #888;
+	background: var(--color__dark_v2);
 }
 
 .filter-type__item p {
@@ -660,6 +667,7 @@ a, input, button {
 	grid-template-columns: repeat(3, 1fr);
 	gap: 70px 20px;
 	margin-top: 60px;
+	border: none;
 }
 
 .card_theme_white .card__img-list {
@@ -880,10 +888,10 @@ a, input, button {
 	display: block;
 	padding: 15px 20px;
 	height: auto;
-	font-weight: 500;
-	color: #7d7779;
+	font-weight: 700;
+	color: var(--color__dark);
 	text-align: center;
-	border: 2px solid #7d7779;
+	border: 2px solid var(--color__dark);
 	border-radius: 0;
 	text-decoration: none;
 }
@@ -897,14 +905,16 @@ a, input, button {
 
 .card__button:hover::after {
 	left: 15px;
+	color: var(--color__white);
 }
 
 .card__button:hover,
 .card__button:focus,
 .card__button:active,
 .card__button:visited {
-	background: none;
-	color: #7d7779;
+	background: var(--color__red);
+	color: var(--color__white);
+	border: 2px solid var(--color__red);
 }
 
 /*.card__button:hover {
@@ -1873,7 +1883,7 @@ a, input, button {
 }
 
 .section--banner-s1x {
-	background: url('/images/banner-s1x-image.webp') no-repeat;
+	background: url('/images/banner/banner-s1x-image.webp') no-repeat;
 	background-size: cover;
 	position: relative;
 	min-height: 680px;
@@ -1881,7 +1891,7 @@ a, input, button {
 
 .section--banner-s1x::before {
 	content: '';
-	background: #333;
+	/*background: #333;*/
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -1935,7 +1945,7 @@ a, input, button {
 }
 
 .section--banner-s2x {
-	background: url('/images/banner-s1x-image.webp') no-repeat;
+	background: url('/images/banner/banner-s1x-image.webp') no-repeat;
 	background-position: center;
 	background-size: cover;
 	position: relative;
@@ -1944,7 +1954,7 @@ a, input, button {
 
 .section--banner-s2x::before {
 	content: '';
-	background: #333;
+	/*background: #333;*/
 	position: absolute;
 	top: 0;
 	left: 0;
