@@ -67,7 +67,7 @@ html {
 }
 
 body {
-	background: #edeef8;
+	/*background: #edeef8;*/
 	text-rendering: optimizeLegibility;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
@@ -899,7 +899,7 @@ a, input, button {
 	left: 15px;
 }
 
-.card__button:hover, 
+.card__button:hover,
 .card__button:focus,
 .card__button:active,
 .card__button:visited {
@@ -1806,7 +1806,7 @@ a, input, button {
 }
 
 .product--info-add--item-description,
-.product--info-add--item-description p, 
+.product--info-add--item-description p,
 .product--info-add--item-description ul > li {
     font-family: Montserrat;
     font-weight: 500;
@@ -2019,7 +2019,7 @@ a, input, button {
 	.banner-s2x--text {
 		margin-bottom: 0;
 		font-size: 18px;
-	} 
+	}
 }
 
 @media (max-width: 480px) {
