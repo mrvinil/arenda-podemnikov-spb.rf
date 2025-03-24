@@ -1,6 +1,5 @@
 <? require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php"); ?>
 
-рпварапрhfghf6546llll
 <?$APPLICATION->IncludeComponent("bitrix:news.detail", "catalog", Array(
 		"DISPLAY_DATE" => "Y",
 		"DISPLAY_NAME" => "Y",
